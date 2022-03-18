@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/lib/postgresql/12/bin/./pg_ctl -D /var/lib/postgresql/12/data -l /var/lib/postgresql/logfile restart -t 240
