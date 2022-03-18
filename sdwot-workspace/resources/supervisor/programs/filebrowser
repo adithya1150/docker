@@ -1,0 +1,10 @@
+[program:filebrowser]
+command=/usr/local/bin/filebrowser --port=8055 --baseurl="%(ENV_WORKSPACE_BASE_URL)s/shared/filebrowser/" --database=/home/sdwot/filebrowser.db
+user=sdwot
+directory=/
+autostart=true
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/home/sdwot/logs/%(program_name)s.log ; log logs into file
+startretries=5   ; max # of serial start failures (default 3)
+

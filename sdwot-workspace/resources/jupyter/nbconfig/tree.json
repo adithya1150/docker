@@ -1,6 +1,6 @@
 {
   "load_extensions": {
-    "nbextensions_configurator/tree_tab/main": true,
+    "nbextensions_configurator/tree_tab/main": false,
     "jupyter_tooling/open-tools-widget": true,
     "jupyter_tooling/tooling-tree-widget": true
   }

@@ -1,0 +1,11 @@
+[program:vncserver]
+user=sdwot
+command=/home/sdwot/.vncserver.sh
+environment=HOME="/home/sdwot/",USER="sdwot"
+user=sdwot
+autostart=true
+autorestart=true
+priority=55
+redirect_stderr=true 
+stdout_logfile=/home/sdwot/logs/%(program_name)s.log ; log logs into file
+startretries=5   ; max # of serial start failures (default 3)
