@@ -61,7 +61,7 @@ class MLHubDockerSpawner(DockerSpawner):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.hub_name = utils.ENV_HUB_NAME
-        self.default_labels = {utils.LABEL_MLHUB_ORIGIN: self.hub_name, utils.LABEL_MLHUB_USER: self.user.name, utils.LABEL_MLHUB_SERVER_NAME: self.name}
+        self.default_labels = {utils.LABEL_MLHUB_ORIGIN: self.hub_name, utils.LABEL_MLHUB_USER: self.user.name}
         # Get the MLHub container name to be used as the DNS name for the spawned workspaces, so they can connect to the Hub even if the container is
         # removed and restarted
         client = self.highlevel_docker_client
@@ -173,9 +173,8 @@ class MLHubDockerSpawner(DockerSpawner):
         if self.user_options.get('is_mount_volume') == 'on':
             # {username} and {servername} will be automatically replaced by DockerSpawner with the right values as in template_namespace
             #volumeName = self.name_template.format(prefix=self.prefix)
-            self.highlevel_docker_client.volumes.create(name=self.object_name, labels=self.default_labels)
-            self.volumes = {self.object_name: "/workspace"}
-
+            self.highlevel_docker_client.volumes.create(name=self.user.name)
+            self.volumes =  {self.user.name: "/workspace" }
         extra_create_kwargs = {}
         # set default label 'origin' to know for sure which containers where started via the hub
         extra_create_kwargs[utils.OPTION_LABELS] = self.default_labels
